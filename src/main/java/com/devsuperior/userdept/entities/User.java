@@ -6,12 +6,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.servlet.Filter;
+
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 //Mapeamento da classe com anotations
 @Entity // anotation informando que é uma entidade de um banco de dados
 @Table(name = "tb_user") // Informando que é uma tabela no bd
 public class User {
-
+ public Filter characterEncodingFilter() {
+        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+        filter.setEncoding("UTF-8");
+        filter.setForceEncoding(true);
+        return filter;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

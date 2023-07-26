@@ -28,19 +28,18 @@ public class UserController {
 
     @GetMapping // Indica que é uma requisição HTTP
     public List<User> findAll() { // Retorna uma lista de usuários do banco de dados
-        List<User> result = repository.findAll();
-        return result;
+        return repository.findAll();
     }
     @GetMapping(value = "/{id}") // busca pelo id nos parametros da URL
     public User findById(@PathVariable Long id) { 
-        User result = repository.findById(id).get(); // O get para pegar o usuário pelo id
-        return result;
+        // O get para pegar o usuário pelo id
+        return repository.findById(id).get();
     }
 
     @PostMapping // Indica que é uma requisição HTTP para inserção
     public User insert(@RequestBody User user) { 
-        User result = repository.save(user); // O save para inserir um usuário pelo Body da req
-        return result; 
+
+        return repository.save(user);
     }
 
    @PutMapping("/update/{id}")
