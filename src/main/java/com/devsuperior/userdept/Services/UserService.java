@@ -53,12 +53,6 @@ public class UserService {
     public UserDTO insertUser(User user) {
         UserDTO userDTO = new UserDTO();
 
-        // userDTO.setName(user.getName());
-        // userDTO.setEmail(user.getEmail());
-        // userDTO.setAtivo(user.getAtivo());
-        // userDTO.setDepartment(user.getDepartment());
-        // userDTO.setId(user.getId());
-
         userRepository.save(user);
 
         return userDTO;
@@ -100,13 +94,7 @@ public class UserService {
 
     public ResponseEntity<String> deleteService(Long id) {
         User userToDelete = userRepository.findById(id).get();
-        //  User userRep = new User();
-        //  userRep.setName(userToDelete.getName());
-        //  userRep.setAtivo(userToDelete.getAtivo());
-        //  userRep.setEmail(userToDelete.getEmail());
-        //  userRep.setDepartment(userToDelete.getDepartment());
-         
-         userRepository.delete(userToDelete);
+        userRepository.delete(userToDelete);
         
         return ResponseEntity.ok("Usuario excluido com sucesso");
     }
